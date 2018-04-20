@@ -1,0 +1,114 @@
+
+body {
+	min-height: 100vh;  /* need this line to tell body to fill viewport */
+	font-family: 'Montserrat', sans-serif;
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	color: black;
+}
+
+header {
+       text-align: center;
+       padding: 10px;
+}
+
+
+h1 {
+   font-size: x-large;
+   font-weight: light;
+}
+
+
+main {
+     flex: 1 0 auto;  /* the sticky footer trick without the footer */
+}
+
+
+input {
+	border-style: solid;
+	border-radius: 5px;
+	font-size: medium;
+}
+
+
+p {
+	font-size: medium;
+	margin: 10px;
+}
+
+.container {
+    padding: 30px 5px 5px 5px;
+		display: flex;
+		flex-direction: row;
+		flex-flow: row wrap;
+}
+
+.card {
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	display: flex;
+	flex-direction: row;
+	padding: 10px 10px 10px 10px;
+	width: 350px;
+	max-height: 260px;
+}
+
+.book-title{
+
+}
+
+.book-author{
+
+}
+
+.book-details{
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+
+.bookOverlay_base {
+    display: none; /* Start out hidden, we'll dynamically enable it later. */
+
+    /* Full-window container ... */
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    /* ... floating above everything else ... */
+    z-index: 2;
+
+    /* ... with partial transparency,
+           to make everything else look greyed out */
+    background-color: rgba(0,0,0,0.5);
+
+    /* Flex options for child objects */
+    align-items: center;
+    justify-content: center;
+}
+
+.bookOverlay_inner {
+    width: 50%;
+    height: 50%;
+    background-color: rgb(255,255,255); /* Must set the background color here,
+				otherwise it inherits from the parent */
+    position: relative;
+}
+
+/* Not covered in Discussion: force the close button into
+              the upper-right corner of it's parent container */
+.bookOverlay_button {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.overlaylist{
+	display: none;
+}
