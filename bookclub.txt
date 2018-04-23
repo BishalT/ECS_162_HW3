@@ -1,0 +1,34 @@
+overlay:
+
+<div class="bookOverlay_base" id="bookOverlay">
+    <div class="bookOverlay_inner" id="bookOverlay_inner">
+        BUTTON OFF
+        <div class=centerOverlay>
+          BUTTON LEFT
+          <div class="innerCard" id="overlayContain">
+            IMAGE
+            <div class="book-details">
+              TITLE
+              AUTHOR
+              DESCRIPTION
+            </div>
+          </div>
+          RIGHT BUTTON
+        </div>
+        KEEP BUTTON
+    </div>
+</div>
+
+individual book card:
+
+<div class="outerCard">
+  BUTTON DELETE
+  div class="innerCard" id="overlayContain">
+    IMAGE
+    <div class="book-details">
+      TITLE
+      AUTHOR
+      DESCRIPTION
+    </div>
+  </div>
+</div>
