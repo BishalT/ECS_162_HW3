@@ -47,8 +47,18 @@ p {
     display: none;
 }
 
-.card {
+.outerCard {
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	display: flex;
+	flex-direction: row;
+	padding: 10px 10px 10px 10px;
+	width: 350px;
+	max-height: 260px;
+	min-height: 260px;
+	max-width:
+}
+
+.innerCard {
 	display: flex;
 	flex-direction: row;
 	padding: 10px 10px 10px 10px;
@@ -99,11 +109,15 @@ p {
 .bookOverlay_inner {
     width: 50%;
     height: 50%;
-    background-color: rgb(255,255,255); /* Must set the background color here,
+    /*background-color: rgb(255,255,255); /* Must set the background color here,
 				otherwise it inherits from the parent */
-    position: relative;
+  	background-color: rgba(0,0,0,0.5);
+		position: relative;
 		display: flex;
 		flex-direction: column;
+
+		align-items: center;
+    justify-content: center;
 }
 
 /* Not covered in Discussion: force the close button into
@@ -117,6 +131,10 @@ p {
 .centerOverlay{
 	display: flex;
 	flex-direction: row;
-	max-width: 350px;
-	max-height: 350px;
+	background-color: rgb(255,255,255); /* Must set the background color here,
+			otherwise it inherits from the parent */
+}
+
+.leftRightButton{
+	background-color: rgba(0,0,0,0.5);
 }

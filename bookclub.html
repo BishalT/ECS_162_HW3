@@ -32,17 +32,19 @@
 
     <div class="bookOverlay_base" id="bookOverlay">
         <div class="bookOverlay_inner" id="bookOverlay_inner">
-            <button class="bookOverlay_button" type="button" onClick="off();">Make it go away!</button>
-
+            <button class="bookOverlay_button" type="button" onClick="off();">X</button>
             <div class=centerOverlay>
-              <button class="bookOverlay_left" type="button" onClick="left();">LEFT!</button>
-              <img id="overlay-book-pic" src=""/>
-              <p id="overlay-book-title">TITLE</p>
-              <p id="overlay-book-author">AUTHOR</p>
-              <p id="overlay-description">PARAGAPH</p>
-              <button class="bookOverlay_right" type="button" onClick="right();">RIGHT!</button>
+              <button class="leftRightButton" type="button" onClick="left();">LEFT!</button>
+              <div class="innerCard" id="overlayContain">
+                <img id="overlay-book-pic" src=""/>
+                <div class="book-details">
+                  <p id="overlay-book-title"></p>
+                  <p id="overlay-book-author"></p>
+                  <p id="overlay-description"></p>
+                </div>
+              </div>
+              <button class="leftRightButton" type="button" onClick="right();">RIGHT!</button>
             </div>
-
             <button class="bookOverlay_keep" type="button" onClick="keep();">Keep!</button>
         </div>
     </div>

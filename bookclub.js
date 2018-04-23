@@ -1,5 +1,7 @@
-function newRequest() {
+var currentBookCounter = 0;
 
+function newRequest() {
+	currentBookCounter = 0;
 	var title = document.getElementById("title").value;
 	title = title.trim();
 	title = title.replace(" ","+");
@@ -80,9 +82,13 @@ function handleResponse(bookListObj) {
 		//bookContain.onclick = on;
 
 		var image = document.createElement("img");			// set the thumbnail
+		image.classList.add("nondisplay-img");
 		var titlePgh = document.createElement("p");			// set the title
+		titlePgh.classList.add("nondisplay-title");
 		var authorPgh = document.createElement("p");		// set the author
+		authorPgh.classList.add("nondisplay-author");
 		var descriptPgh = document.createElement("p");	// set the description
+		descriptPgh.classList.add("nondisplay-descript");
 
 		image.src = thumbNail;
 		titlePgh.textContent = title;
@@ -106,11 +112,14 @@ function off() {
 }
 
 function keep(){
-	var overlay_inner = document.getElementById("bookOverlay_inner");	// overlay center info div
+	var overlayContain = document.getElementById("overlayContain");	// overlay center info div
 	var bookDisplay = document.getElementById("actualDisplay");
 
+
 	var bookContain = document.createElement("div");	// create the book container
-	bookContain.classList.add("card");
+	bookContain.classList.add("outerCard");
+	var bookInner = document.createElement("div");
+	bookInner.classList.add("innerCard");
 	var bookDetails = document.createElement("div");	// create the details container
 	bookDetails.classList.add("book-details");
 
@@ -124,22 +133,23 @@ function keep(){
 	button.textContent="X";
 	button.classList.add("removeButton");
 
-	image.src = overlay_inner.childNodes[3].src;		// idk why they're like this.. but they are..
-	titlePgh.textContent = overlay_inner.childNodes[5].textContent;
+	image.src = document.getElementById("overlay-book-pic").src;
+	titlePgh.textContent = document.getElementById("overlay-book-title").textContent;
 	titlePgh.classList.add("book-title");
-	authorPgh.textContent = overlay_inner.childNodes[7].textContent;
+	authorPgh.textContent = document.getElementById("overlay-book-author").textContent;
 	authorPgh.classList.add("book-author");
-	descriptPgh.textContent = overlay_inner.childNodes[9].textContent;
+	descriptPgh.textContent = document.getElementById("overlay-description").textContent;
 	descriptPgh.classList.add("description");
 
 	bookDetails.append(titlePgh);				// add title to details container
 	bookDetails.append(authorPgh);			// add author to details container
 	bookDetails.append(descriptPgh);		// add description to details container
 
-	bookContain.append(button);
-	bookContain.append(image);					// add thumbnail to book container
-	bookContain.append(bookDetails);		// add thumbnail to book container
+	bookInner.append(image);					// add thumbnail to book container
+	bookInner.append(bookDetails);		// add thumbnail to book container
 
+	bookContain.append(button);
+	bookContain.append(bookInner);
 	bookDisplay.append(bookContain);		// throw container to the book display
 }
 
@@ -148,7 +158,6 @@ function remove(){
 	this.parentNode.parentNode.removeChild(this.parentNode); 	// delete it
 }
 
-var currentBookCounter = 0;
 function initalOn() {
 		setOverlay("none");
 }
