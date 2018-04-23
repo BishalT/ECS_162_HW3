@@ -43,6 +43,9 @@ p {
 		flex-direction: row;
 		flex-flow: row wrap;
 }
+.holdContainer {
+    display: none;
+}
 
 .card {
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -99,6 +102,8 @@ p {
     background-color: rgb(255,255,255); /* Must set the background color here,
 				otherwise it inherits from the parent */
     position: relative;
+		display: flex;
+		flex-direction: column;
 }
 
 /* Not covered in Discussion: force the close button into
@@ -109,6 +114,9 @@ p {
     right: 0px;
 }
 
-.overlaylist{
-	display: none;
+.centerOverlay{
+	display: flex;
+	flex-direction: row;
+	max-width: 350px;
+	max-height: 350px;
 }

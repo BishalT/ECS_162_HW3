@@ -24,21 +24,26 @@
     <button onclick="newRequest()">submit</button>
 
 
-
-    <div id="bookDisplay" class="container">
+    <div id="actualDisplay" class="container">
+    </div>
+    <div id="bookDisplay" class="holdContainer">
     </div>
 
 
     <div class="bookOverlay_base" id="bookOverlay">
-        <div class="bookOverlay_inner">
+        <div class="bookOverlay_inner" id="bookOverlay_inner">
             <button class="bookOverlay_button" type="button" onClick="off();">Make it go away!</button>
-            <img id="overlay-book-pic" src=""/>
-            <p id="overlay-book-title">TITLE</p>
-            <p id="overlay-book-author">AUTHOR</p>
-            <p id="overlay-description">PARAGAPH</p>
-            <div id="overlay-list" class="overlaylist">
 
+            <div class=centerOverlay>
+              <button class="bookOverlay_left" type="button" onClick="left();">LEFT!</button>
+              <img id="overlay-book-pic" src=""/>
+              <p id="overlay-book-title">TITLE</p>
+              <p id="overlay-book-author">AUTHOR</p>
+              <p id="overlay-description">PARAGAPH</p>
+              <button class="bookOverlay_right" type="button" onClick="right();">RIGHT!</button>
             </div>
+
+            <button class="bookOverlay_keep" type="button" onClick="keep();">Keep!</button>
         </div>
     </div>
 

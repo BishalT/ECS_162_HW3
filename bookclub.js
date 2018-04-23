@@ -76,10 +76,8 @@ function handleResponse(bookListObj) {
 		}
 
 		var bookContain = document.createElement("div");	// create the book container
-		bookContain.classList.add("card");
 		var bookDetails = document.createElement("div");	// create the details container
-		bookDetails.classList.add("book-details");
-		bookContain.onclick = on;
+		//bookContain.onclick = on;
 
 		var image = document.createElement("img");			// set the thumbnail
 		var titlePgh = document.createElement("p");			// set the title
@@ -88,11 +86,8 @@ function handleResponse(bookListObj) {
 
 		image.src = thumbNail;
 		titlePgh.textContent = title;
-		titlePgh.classList.add("book-title");
 		authorPgh.textContent = author;
-		authorPgh.classList.add("book-author");
     descriptPgh.textContent = description;
-		descriptPgh.classList.add("description");
 
 		bookDetails.append(titlePgh);				// add title to details container
 		bookDetails.append(authorPgh);			// add author to details container
@@ -103,17 +98,81 @@ function handleResponse(bookListObj) {
 
     bookDisplay.append(bookContain);		// throw container to the book display
 	}
-}
-
-
-function on() {
-    document.getElementById("bookOverlay").style.display = "block";
-    document.getElementById("overlay-book-pic").src = this.childNodes[0].src;
-    document.getElementById("overlay-book-title").textContent = this.childNodes[1].childNodes[0].textContent;
-    document.getElementById("overlay-book-author").textContent = this.childNodes[1].childNodes[1].textContent;
-    document.getElementById("overlay-description").textContent = this.childNodes[1].childNodes[2].textContent;
+	initalOn();
 }
 
 function off() {
     document.getElementById("bookOverlay").style.display = "none";
+}
+
+function keep(){
+	var overlay_inner = document.getElementById("bookOverlay_inner");	// overlay center info div
+	var bookDisplay = document.getElementById("actualDisplay");
+
+	var bookContain = document.createElement("div");	// create the book container
+	bookContain.classList.add("card");
+	var bookDetails = document.createElement("div");	// create the details container
+	bookDetails.classList.add("book-details");
+
+	var image = document.createElement("img");			// set the thumbnail
+	var titlePgh = document.createElement("p");			// set the title
+	var authorPgh = document.createElement("p");		// set the author
+	var descriptPgh = document.createElement("p");	// set the description
+
+	var button = document.createElement("button");
+	button.onclick= remove;
+	button.textContent="X";
+	button.classList.add("removeButton");
+
+	image.src = overlay_inner.childNodes[3].src;		// idk why they're like this.. but they are..
+	titlePgh.textContent = overlay_inner.childNodes[5].textContent;
+	titlePgh.classList.add("book-title");
+	authorPgh.textContent = overlay_inner.childNodes[7].textContent;
+	authorPgh.classList.add("book-author");
+	descriptPgh.textContent = overlay_inner.childNodes[9].textContent;
+	descriptPgh.classList.add("description");
+
+	bookDetails.append(titlePgh);				// add title to details container
+	bookDetails.append(authorPgh);			// add author to details container
+	bookDetails.append(descriptPgh);		// add description to details container
+
+	bookContain.append(button);
+	bookContain.append(image);					// add thumbnail to book container
+	bookContain.append(bookDetails);		// add thumbnail to book container
+
+	bookDisplay.append(bookContain);		// throw container to the book display
+}
+
+
+function remove(){
+	this.parentNode.parentNode.removeChild(this.parentNode); 	// delete it
+}
+
+var currentBookCounter = 0;
+function initalOn() {
+		setOverlay("none");
+}
+
+function left(){
+	setOverlay("left");
+}
+
+function right(){
+	setOverlay("right");
+}
+
+function setOverlay(movement){
+	var bookDisplay = document.getElementById("bookDisplay");
+	if(movement == "left" && currentBookCounter>0){
+		currentBookCounter--;		// move left
+	}
+	else if(movement == "right" && currentBookCounter < bookDisplay.childNodes.length){
+		currentBookCounter++;		// move right
+	}
+
+	document.getElementById("bookOverlay").style.display = "block";
+	document.getElementById("overlay-book-pic").src = bookDisplay.childNodes[currentBookCounter].childNodes[0].src;
+	document.getElementById("overlay-book-title").textContent = bookDisplay.childNodes[currentBookCounter].childNodes[1].childNodes[0].textContent;
+	document.getElementById("overlay-book-author").textContent = bookDisplay.childNodes[currentBookCounter].childNodes[1].childNodes[1].textContent;
+	document.getElementById("overlay-description").textContent = bookDisplay.childNodes[currentBookCounter].childNodes[1].childNodes[2].textContent;
 }
