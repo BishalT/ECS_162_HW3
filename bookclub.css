@@ -1,11 +1,13 @@
 
-body {
+html, body {
 	min-height: 100vh;  /* need this line to tell body to fill viewport */
 	font-family: 'Montserrat', sans-serif;
 	background-color: white;
 	display: flex;
 	flex-direction: column;
 	color: black;
+    margin: 0;
+    padding: 0;
 }
 
 header {
@@ -13,16 +15,237 @@ header {
        padding: 10px;
 }
 
+#afterkeep {
+    margin-left: -20vh;
+    margin-top: -80px;
+    padding-bottom: 4vh;
+    display: none;
+    -webkit-box-shadow: 0px 10px 12px -2px rgba(186,186,186,1);
+-moz-box-shadow: 0px 10px 12px -2px rgba(186,186,186,1);
+box-shadow: 0px 10px 12px -2px rgba(186,186,186,1);
+}
+
+#submitafterkeep {
+    background-color: rgba(73, 120,246,1);
+    border-radius: 15px;
+    color: white;
+    padding-right: 4vh;
+    padding-left: 4vh;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    letter-spacing: 1px;
+    font-size: 20px;
+    font-weight: 100;
+
+}
 
 h1 {
    font-size: x-large;
    font-weight: light;
 }
 
+#bookclub {
+    text-align: left;
+    font-size: 27px;
+    text-transform: uppercase;
+    color: rgba(73, 120,246,1);
+
+}
+
+#search {
+    font-weight: 100;
+}
+
+#title {
+    border-color: rgba(73, 120,246,1);
+    height: 5.5vh;
+    border-radius: 1.5vh;
+    width: 33vh;
+
+}
+
+#author {
+     border-color: rgba(73, 120,246,1);
+    height: 5.5vh;
+    border-radius: 1.5vh;
+    width: 33vh;
+}
+
+#isbn {
+    border-color: rgba(73, 120,246,1);
+    height: 5.5vh;
+    border-radius: 1.5vh;
+    width: 33vh;
+}
+
+
+#authort {
+    width: 20vh;
+    font-weight: 100;
+    font-size: 20px;
+    font-size: 1em;
+    color: rgba(73, 120,246,1);
+
+}
+
+.align {
+    display: inline-block;
+}
+
+.align2 {
+    display: inline-block;
+    color: rgba(73, 120,246,1);
+    font-weight: 500;
+}
+
+
+.left {
+    margin-left: 20vh;
+}
+
+#authort2 {
+    font-weight: 100;
+    color: dimgray;
+    font-size: 15px;
+    text-align: left;
+}
+
+/*------MOBILE-----------*/
+
+@media (max-width: 470px) {
+    .left {
+       margin-left: 15%;
+    }
+
+    #bookclub {
+        text-align: center;
+    }
+
+    .align2 {
+        display: block;
+        width: 50%;
+        text-align: center;
+        color: rgba(73, 120,246,1);
+        font-weight: 500;
+    }
+
+    .align {
+    margin-top: -9vh;
+    display: inline-block;
+}
+
+    .lower {
+        margin-top: 3vh;
+    }
+
+    #submit {
+        width: 90%;
+        border-radius: 10px!important;
+        margin-left: 0px!important;
+    }
+
+    #submitafterkeep {
+
+    }
+
+    #title {
+    border-color: rgba(73, 120,246,1);
+    height: 5.5vh;
+    border-radius: 1.5vh;
+    width: 50vh;
+
+}
+
+#author {
+     border-color: rgba(73, 120,246,1);
+    height: 5.5vh;
+    border-radius: 1.5vh;
+    width: 33vh;
+    width: 50vh;
+}
+
+    #isbn {
+    border-color: rgba(73, 120,246,1);
+    height: 5.5vh;
+    border-radius: 1.5vh;
+    width: 50vh;
+}
+
+}
+
+/*-----------------------*/
+
+#submit {
+    background-color: rgba(73, 120,246,1);
+    border-radius: 15px;
+    color: white;
+    padding-right: 4vh;
+    padding-left: 4vh;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    letter-spacing: 1px;
+    font-size: 20px;
+    font-weight: 100;
+    margin-left: 30%;
+}
+
+
+#submit2 {
+    background-color: rgba(73, 120,246,1);
+    border-radius: 15px;
+    color: white;
+    padding-right: 4vh;
+    padding-left: 4vh;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    letter-spacing: 1px;
+    font-size: 20px;
+    font-weight: 100;
+
+}
 
 main {
      flex: 1 0 auto;  /* the sticky footer trick without the footer */
 }
+
+.error {
+    margin-top: -80vh;
+    padding-top: 20vh;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 5;
+    padding-bottom: 50vh;
+		display: none;
+}
+
+
+.error h1 {
+    text-align: center;
+    color: white;
+    line-height: 1.6;
+    font-weight: 100;
+
+
+}
+
+.spaceabove {
+    margin-top: 20vh;
+}
+
+.error button {
+    text-align: center;
+}
+
+#submit2  {
+    margin: 0 auto;
+    padding-left: 8vh;
+    padding-right: 8vh;
+    border-color: rgba(73, 120,246,1);
+}
+
+.center {
+    text-align: center;
+}
+
 
 
 input {
@@ -39,31 +262,38 @@ p {
 
 .container {
     padding: 30px 5px 5px 5px;
-		display: flex;
-		flex-direction: row;
-		flex-flow: row wrap;
+    display: flex;
+    flex-direction: row;
+    flex-flow: row wrap;
+    background-color: rgba(0,0,0,0.0)
 }
+
 .holdContainer {
     display: none;
 }
 
 .outerCard {
-	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.0);
 	display: flex;
 	flex-direction: row;
 	padding: 10px 10px 10px 10px;
 	width: 350px;
 	max-height: 260px;
 	min-height: 260px;
-	max-width:
+    margin: 3vh;
+    -webkit-box-shadow: 0px 10px 12px -2px rgba(186,186,186,1);
+-moz-box-shadow: 0px 10px 12px -2px rgba(186,186,186,1);
+box-shadow: 0px 10px 12px -2px rgba(186,186,186,1);
+
 }
 
 .innerCard {
 	display: flex;
 	flex-direction: row;
-	padding: 10px 10px 10px 10px;
+	padding: 20px 20px 20px 20px;
 	width: 350px;
 	max-height: 260px;
+    background-color: rgb(255,255,255);
 }
 
 .book-title{
@@ -77,8 +307,9 @@ p {
 .book-details{
 	display: flex;
 	flex-direction: column;
-	overflow: hidden;
+    overflow: hidden;
 	text-overflow: ellipsis;
+
 }
 
 
@@ -99,7 +330,7 @@ p {
 
     /* ... with partial transparency,
            to make everything else look greyed out */
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.7);
 
     /* Flex options for child objects */
     align-items: center;
@@ -107,34 +338,111 @@ p {
 }
 
 .bookOverlay_inner {
-    width: 50%;
-    height: 50%;
+    margin: 0 auto;
+    width: 145vh;
+    height: 80vh;
+
+    margin-left: -200px;
+
     /*background-color: rgb(255,255,255); /* Must set the background color here,
 				otherwise it inherits from the parent */
-  	background-color: rgba(0,0,0,0.5);
-		position: relative;
-		display: flex;
-		flex-direction: column;
-
-		align-items: center;
+  	background-color: transparent;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    margin-left: 25vh;
+   /* left: 50%;
+    top: 50%;
+    /*margin-left: -400px;
+    margin-top: -260px;*/
+
+
 }
 
 /* Not covered in Discussion: force the close button into
               the upper-right corner of it's parent container */
 .bookOverlay_button {
     position: absolute;
+    border-radius: 100%;
+
+    background-color: rgba(0,0,0,0);
     top: 0px;
     right: 0px;
+    height: 40px;
+    color: white;
+    width: 40px;
+    border-color: white;
+    margin-top: 30px;
+    font-size: 27px;
+    border-width: 2px;
+
+}
+
+
+.bookOverlay_keep {
+
+    width: 120px;
+    height: 50px;
+    color: white;
+
+    margin-left: -20px!important;
+    background-color: rgba(73, 120,246,1);
+    border-radius: 15px;
+    color: white;
+    border-color: rgba(73, 120,246,1);
+
+     margin-top: 30px;
+    letter-spacing: 1px;
+    font-size: 20px;
+    font-weight: 100;
+
+
+}
+
+.removeButton {
+    height: 23px;
+    border-radius: 50%;
+
 }
 
 .centerOverlay{
+
+    width: 800px;
+    margin-top: 100px;
+    margin-left: 100px;
 	display: flex;
 	flex-direction: row;
-	background-color: rgb(255,255,255); /* Must set the background color here,
+	background-color: transparent; /* Must set the background color here,
 			otherwise it inherits from the parent */
 }
 
 .leftRightButton{
-	background-color: rgba(0,0,0,0.5);
+	background-color: transparent;
+    height: 10vh;
+    margin-top: 20vh;
+    border-radius: 10px;
+    border-width: 2px;
+    z-index: 10;
+    padding: 10px;
+    margin: 40px;
+    margin-top: 110px!important;
+    border-color: white;
+
+
+
+}
+
+#right {
+    color: white;
+    font-size: 30px;
+    background-repeat: no-repeat;
+
+}
+
+#left {
+     color: white;
+    font-size: 30px;
+    background-repeat: no-repeat;
 }

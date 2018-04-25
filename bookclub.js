@@ -1,16 +1,34 @@
 var currentBookCounter = 0;
 
-function newRequest() {
+function newRequest(caller) {
+    document.getElementById("landingPage").style.display = 'none';
+    document.getElementById("afterkeep").style.display = 'block';
+
 	currentBookCounter = 0;
-	var title = document.getElementById("title").value;
-	title = title.trim();
+
+    if (caller == 'landing'){
+        var parent = document.getElementById('landingPage');
+        var title = parent.querySelector('#title').value;
+        var author = parent.querySelector('#author').value;
+        var isbn = parent.querySelector('#isbn').value;
+    }
+
+    else{
+        var parent = document.getElementById('afterkeep');
+        var title = parent.querySelector('#title').value;
+        var author = parent.querySelector('#author').value;
+        var isbn = parent.querySelector('#isbn').value;
+    }
+
+	//var title = document.getElementById("title").value;
+    title = title.trim();
 	title = title.replace(" ","+");
 
-	var author = document.getElementById("author").value;
+	//var author = document.getElementById("author").value;
 	author = author.trim();
 	author = author.replace(" ","+");
 
-	var isbn = document.getElementById("isbn").value;
+	//var isbn = document.getElementById("isbn").value;
 	isbn = isbn.trim();
 	isbn = isbn.replace("-","");
 
@@ -32,21 +50,32 @@ function newRequest() {
 
 		// build up complicated request URL
 		var beginning = "https://www.googleapis.com/books/v1/volumes?q="
-		var callback = "&callback=handleResponse"
+		//var callback = "&callback=handleResponse"
+		var callback = "&callback=newRequest.handleResponseM"
 
 		script.src = beginning+query+callback
 		script.id = "jsonpCall";
 
 		// put new script into DOM at bottom of body
 		document.body.appendChild(script);
-		}
 
+		newRequest.handleResponseM = function(bookListObj) {
+					handleResponse(bookListObj, title, author, isbn);
+ 			}
+		}
 }
 
 
-function handleResponse(bookListObj) {
+function handleResponse(bookListObj, title, author, isbn) {
 	var bookList = bookListObj.items;
 
+	if( bookListObj.totalItems == 0){
+		document.getElementById("error").style.display = "block";
+		document.getElementById("error-title").textContent = title;
+		document.getElementById("error-author").textContent= author;
+		document.getElementById("error-isbn").textContent = isbn;
+		return;
+	}
 	/* where to put the data on the Web page */
 	var bookDisplay = document.getElementById("bookDisplay");
 
@@ -109,6 +138,7 @@ function handleResponse(bookListObj) {
 
 function off() {
     document.getElementById("bookOverlay").style.display = "none";
+		document.getElementById("error").style.display = "none";
 }
 
 function keep(){
@@ -128,10 +158,6 @@ function keep(){
 	var authorPgh = document.createElement("p");		// set the author
 	var descriptPgh = document.createElement("p");	// set the description
 
-	var button = document.createElement("button");
-	button.onclick= remove;
-	button.textContent="X";
-	button.classList.add("removeButton");
 
 	image.src = document.getElementById("overlay-book-pic").src;
 	titlePgh.textContent = document.getElementById("overlay-book-title").textContent;
@@ -140,6 +166,11 @@ function keep(){
 	authorPgh.classList.add("book-author");
 	descriptPgh.textContent = document.getElementById("overlay-description").textContent;
 	descriptPgh.classList.add("description");
+
+    var button = document.createElement("button");
+	button.onclick= remove;
+	button.textContent="X";
+	button.classList.add("removeButton");
 
 	bookDetails.append(titlePgh);				// add title to details container
 	bookDetails.append(authorPgh);			// add author to details container
